@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en" ng-app="app">
+<html>
+  <head>
+    <meta charset="utf-8">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+
+    <title>Kick Map</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      html, body, #map{
+        height: 100%;
+        width: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+    </style>
+    
+    <script src="cordova.js"></script>  
+    <link rel="stylesheet" href="lib/onsen/css/onsenui.css">  
+  <link rel="stylesheet" href="styles/app.css"/>
+  <link rel="stylesheet" href="styles/leaflet.css"/>
+  <link rel="stylesheet" href="styles/onsen-css-components.css">  
+
+<script type="text/javascript">
+ document.addEventListener("deviceready", onDeviceReady, false);
+
+    // Cordova is ready
+    //
+    function onDeviceReady() {
+      
+        navigator.geolocation.getCurrentPosition(onSuccess, onError);
+    }
+function onSuccess(position) {
+  map.setView(new L.LatLng(position.coords.latitude,position.coords.longitude),14);
+L.marker([ position.coords.latitude,position.coords.longitude]).addTo(map).bindPopup("<b>Your location!</b><br />").openPopup();
+
+}
+
+function onError(error) {
+        alert('code: '    + error.code    + '\n' +
+              'message: ' + error.message + '\n');
+    }
+</script>
+  </head>
+  <body>
+
+    <div class="navigation-bar">
+  <div class="navigation-bar__center">
+<div class="left"><span  class="toolbar-button--quiet navigation-bar__line-height" onclick="window.location='posts.html';">Back</span> </div>
+
+  </div>
+</div>
+    <div id="map"></div>
+    <script src="http://leafletjs.com/dist/leaflet.js"></script>
+
+    <script>
+
+    var map = L.map('map').setView([42.377003,-71.11666], 13);
+
+    L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+      attribution: ' © KickRadius 2014 - maps by OSM ',
+      id: 'examples.map-i875mjb7'
+    }).addTo(map);
+
+
+    
+
+    
+    var popup = L.popup();
+
+    // function onMapClick(e) {
+    //   popup
+    //     .setLatLng(e.latlng)
+    //     .setContent("You clicked the map at " + e.latlng.toString())
+    //     .openOn(map);
+    // }
+
+    // map.on('click', onMapClick);
+
+  </script>
+
+  </body>
+</html>
