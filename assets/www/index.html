@@ -6,22 +6,26 @@
   <meta name="mobile-web-app-capable" content="yes">
 
   <title>My App</title>  
-   <script src="cordova.js"></script>  
+   
   <link rel="stylesheet" href="lib/onsen/css/onsenui.css">  
   <link rel="stylesheet" href="styles/app.css"/>
   <link rel="stylesheet" href="styles/onsen-css-components.css">  
+   <link rel="stylesheet" href="styles/leaflet.css"/>
+     
   <script src="lib/onsen/js/angular/angular.js"></script>    
   <script src="lib/onsen/js/onsenui.js"></script>    
   
-  
+   <script src="cordova.js"></script>  
   <script src="js/app.js"></script>  
   <script src="js/postController.js"></script>  
   <script src="js/jquery.js"></script>
 
   
   
-   <script src="cordova1.js"></script>  
+  
   <script src="js/app.js"></script>  
+  <script src="http://leafletjs.com/dist/leaflet.js"></script>
+ 
   <script type="text/javascript">
  var myposition;
  var map;
@@ -56,6 +60,16 @@ function onError(error) {
 </script>
 
   <style>
+    .content{
+      background-image: url('images/bg.jpg');
+background-repeat: no-repeat;
+background-position: center center;
+background-attachment: fixed;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+    }
     .item {
       padding: 10px;
       line-height: 1;
@@ -87,25 +101,23 @@ function onError(error) {
        margin-bottom:20px;
     }
     .half{
-      width: 100px;
-      height: 129px;
+     
     }
   </style>
 
 </head>
 
-<body >    
+<body>    
 
-  <ons-navigator title="Navigator" var="myNavigator">
+  <ons-navigator title="Navigator" var="myNavigator" >
   <ons-page>
-    <ons-toolbar>
-      <div class="center">Welcome to KickRadius</div>
-    </ons-toolbar>
-    <div style="text-align: center">
+   
+    <div   style="text-align: center; height:100%; color:#fff;" class="content" >
       <br><center>
-      <img src="images/logo.png" class="half">
+
+      <img src="images/logo.png" class="half" >
       <br>
-      <h1>KickRadius</h1>
+     <br>
       <button class="button--large--cta normalbutton"  onclick="myNavigator.pushPage('page1.html', { animation : 'slide' } )" >Login </button>
      
      <button class="button button--large normalbutton" onclick="myNavigator.pushPage('page2.html', { animation : 'slide' } )" >Create New Account</button>
@@ -417,9 +429,7 @@ L.marker([ kicks[i].lat,kicks[i].lon]).addTo(map).bindPopup("<center><img src='"
       }
 </style>
     
- <link rel="stylesheet" href="styles/leaflet.css"/>
-     
- <script src="http://leafletjs.com/dist/leaflet.js"></script>
+
   </ons-page>
 </ons-template>
 </body>  
